@@ -7,27 +7,35 @@ var UIController = (function() {
   var DOMstrings = {
     inputType: '.add__type',
     inputDescription: '.add__description',
-    inputValue: '.add__value'
+    inputValue: '.add__value',
+    inputBtn: '.add__btn'
   };
 
   return {
+    // get value from select inputs
     getinput: function() {
       return {
-        // get value from select (income or expense);
         type: document.querySelector(DOMstrings.inputType).value,
         description: document.querySelector(DOMstrings.inputDescription).value,
         value: document.querySelector(DOMstrings.inputValue).value
       };
+    },
+
+    //Make Object UI elements public
+    getDOMstrings: function() {
+      return DOMstrings;
     }
   };
 })();
 
 // Controller
 var controller = (function(budgetCtrl, UIctrl) {
+  var DOM = UIctrl.getDOMstrings;
+
+  // function when input button is clicked
   var ctrlAddItem = function() {
     // 1. Get the filed input data
     var input = UIctrl.getinput();
-
     // 2. Add item to budget controller
     // 3. Add the item to the UI
     // 4. Calculate the budget
@@ -35,7 +43,7 @@ var controller = (function(budgetCtrl, UIctrl) {
   };
 
   //click event
-  document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+  document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
   //key press event
   document.addEventListener('keypress', function(event) {
