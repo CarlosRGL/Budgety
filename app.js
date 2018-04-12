@@ -2,12 +2,25 @@
 var budgetController = (function() {})();
 
 // UI Controller
-var UIController = (function() {})();
+var UIController = (function() {
+  return {
+    getinput: function() {
+      return {
+        // get value from select (income or expense);
+        type: document.querySelector('.add__type').value,
+        description: document.querySelector('.add__description').value,
+        value: document.querySelector('.add__value').value
+      };
+    }
+  };
+})();
 
 // Controller
 var controller = (function(budgetCtrl, UIctrl) {
   var ctrlAddItem = function() {
     // 1. Get the filed input data
+    var input = UIctrl.getinput();
+
     // 2. Add item to budget controller
     // 3. Add the item to the UI
     // 4. Calculate the budget
