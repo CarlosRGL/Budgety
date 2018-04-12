@@ -3,13 +3,20 @@ var budgetController = (function() {})();
 
 // UI Controller
 var UIController = (function() {
+  //Object to control UI elements
+  var DOMstrings = {
+    inputType: '.add__type',
+    inputDescription: '.add__description',
+    inputValue: '.add__value'
+  };
+
   return {
     getinput: function() {
       return {
         // get value from select (income or expense);
-        type: document.querySelector('.add__type').value,
-        description: document.querySelector('.add__description').value,
-        value: document.querySelector('.add__value').value
+        type: document.querySelector(DOMstrings.inputType).value,
+        description: document.querySelector(DOMstrings.inputDescription).value,
+        value: document.querySelector(DOMstrings.inputValue).value
       };
     }
   };
