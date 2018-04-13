@@ -153,18 +153,14 @@ var controller = (function(budgetCtrl, UIctrl) {
     // 1. Get the filed input data
     input = UIctrl.getinput();
     // 2. Add item to budget controller
-    newItem = budgetController.addItem(
-      input.type,
-      input.description,
-      input.value
-    );
+    newItem = budgetCtrl.addItem(input.type, input.description, input.value);
     // 3. Add the item to the UI
     UIctrl.addNewItem(newItem, input.type);
-
     // 4. Clear the fields
     UIctrl.clearFields();
-    // 4. Calculate the budget
-    // 5. Display the budget
+    // 5. Calculate the budget
+
+    // 6. Display the budget
   };
 
   //init
