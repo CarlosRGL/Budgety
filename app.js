@@ -147,20 +147,30 @@ var controller = (function(budgetCtrl, UIctrl) {
     });
   };
 
+  var updateBudget = function() {
+    // 1. Calculate the budget
+    // 2. return the budget
+    // 3. Display the budget
+  };
+
   // function when input button is clicked
   var ctrlAddItem = function() {
     var input, newItem;
+
     // 1. Get the filed input data
     input = UIctrl.getinput();
+
     // 2. Add item to budget controller
     newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+
     // 3. Add the item to the UI
     UIctrl.addNewItem(newItem, input.type);
+
     // 4. Clear the fields
     UIctrl.clearFields();
-    // 5. Calculate the budget
 
-    // 6. Display the budget
+    // 5. Calculate and update budget
+    updateBudget();
   };
 
   //init
