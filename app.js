@@ -169,6 +169,12 @@ var UIController = (function() {
     return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
   };
 
+  var nodeListForEach = function(list, callback) {
+    for (let i = 0; i < list.length; i++) {
+      callback(list[i], i);
+    }
+  };
+
   return {
     // get value from select inputs
     getinput: function() {
@@ -250,14 +256,8 @@ var UIController = (function() {
     },
 
     dispayPercentages: function(percentages) {
-      var fields, nodeListForEach;
+      var fields;
       fields = document.querySelectorAll(DOMstrings.expensesPercLabel);
-
-      nodeListForEach = function(list, callback) {
-        for (let i = 0; i < list.length; i++) {
-          callback(list[i], i);
-        }
-      };
 
       nodeListForEach(fields, function(current, index) {
         if (percentages[index] > 0) {
@@ -276,6 +276,24 @@ var UIController = (function() {
 
       document.querySelector(DOMstrings.dateLabel).textContent =
         month + ' ' + year;
+    },
+
+    changeType: function() {
+      var fields;
+
+      fields = document.querySelectorAll(
+        DOMstrings.inputType +
+          ',' +
+          DOMstrings.inputDescription +
+          ',' +
+          DOMstrings.inputValue
+      );
+
+      nodeListForEach(fields, function(cur) {
+        cur.classList.toggle('red-focus');
+      });
+
+      document.querySelector(DOMstrings.inputBtn).classList.toggle('red');
     },
 
     // Make Object UI elements public
@@ -305,6 +323,10 @@ var controller = (function(budgetCtrl, UIctrl) {
     document
       .querySelector(DOM.container)
       .addEventListener('click', ctrDeleteItem);
+
+    document
+      .querySelector(DOM.inputType)
+      .addEventListener('change', UIctrl.changeType);
   };
 
   var updateBudget = function() {
