@@ -191,16 +191,19 @@ var controller = (function(budgetCtrl, UIctrl) {
     var budget = budgetCtrl.getBudget();
 
     // 3. Display the budget
+    console.log(budget);
   };
 
   // function when input button is clicked
   var ctrlAddItem = function() {
     var input, newItem;
 
-    if (input.description !== '' && !isNaN(input.value) && input.value > 0) {
-      // 1. Get the filed input data
-      input = UIctrl.getinput();
+    console.log(input);
 
+    // 1. Get the filed input data
+    input = UIctrl.getinput();
+
+    if (input.description !== '' && !isNaN(input.value) && input.value > 0) {
       // 2. Add item to budget controller
       newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
