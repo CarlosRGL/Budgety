@@ -1,24 +1,45 @@
 // Budget Controller
-var budgetController = (function() {
+const budgetController = (function() {
   // Contructor for expenses
-  var Expenses = function(id, description, value) {
-    this.id = id;
-    this.description = description;
-    this.value = value;
-    this.percentage = -1;
-  };
+  // var Expenses = function(id, description, value) {
+  //   this.id = id;
+  //   this.description = description;
+  //   this.value = value;
+  //   this.percentage = -1;
+  // };
 
-  Expenses.prototype.calcPercentages = function(totalIncome) {
-    if (totalIncome > 0) {
-      this.percentage = Math.round(this.value / totalIncome * 100);
-    } else {
+  class Expenses {
+    constructor(id, description, value) {
+      this.id = id;
+      this.description = description;
+      this.value = value;
       this.percentage = -1;
     }
-  };
 
-  Expenses.prototype.getPercentage = function() {
-    return this.percentage;
-  };
+    calcPercentages(totalIncome) {
+      if (totalIncome > 0) {
+        this.percentage = Math.round(this.value / totalIncome * 100);
+      } else {
+        this.percentage = -1;
+      }
+    }
+
+    getPercentage() {
+      return this.percentage;
+    }
+  }
+
+  // Expenses.prototype.calcPercentages = function(totalIncome) {
+  //   if (totalIncome > 0) {
+  //     this.percentage = Math.round(this.value / totalIncome * 100);
+  //   } else {
+  //     this.percentage = -1;
+  //   }
+  // };
+
+  // Expenses.prototype.getPercentage = function() {
+  //   return this.percentage;
+  // };
 
   // Contructor for incomes
   var Income = function(id, description, value) {
@@ -134,7 +155,7 @@ var budgetController = (function() {
 })();
 
 // UI Controller
-var UIController = (function() {
+const UIController = (function() {
   //Object to control UI elements
   var DOMstrings = {
     inputType: '.add__type',
@@ -261,7 +282,7 @@ var UIController = (function() {
 
       nodeListForEach(fields, function(current, index) {
         if (percentages[index] > 0) {
-          current.textContent = percentages[index] + '%';
+          current.textContent = `${percentages[index]}%`;
         } else {
           current.textContent = '---';
         }
@@ -304,7 +325,7 @@ var UIController = (function() {
 })();
 
 // Controller
-var controller = (function(budgetCtrl, UIctrl) {
+const controller = (function(budgetCtrl, UIctrl) {
   // Setup event Listeners
   var setupEventListeners = function() {
     var DOM = UIctrl.getDOMstrings();
