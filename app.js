@@ -1,13 +1,12 @@
-// Budget Controller
-const budgetController = (() => {})();
-
-//UI Controller
-const UIController = (() => {})();
+import { budgetController } from './modules/budgetController.js';
+import { UIController } from './modules/UIController.js';
 
 // App Controller
 const controller = ((budgetCtrl, UICtrl) => {
   const ctrlAddItem = () => {
     // 1. Get the filed input data
+    console.log(UICtrl.getInput());
+
     // 2. Add item to budget controller
     // 3. Add the item to the UI
     // 4. Calculate the budget
