@@ -30,9 +30,9 @@ const budgetController = (function() {
     }
   }
 
-  var calculateTotal = function(type) {
+  const calculateTotal = type => {
     var sum = 0;
-    data.allItems[type].forEach(function(cur) {
+    data.allItems[type].forEach(cur => {
       sum += cur.value;
     });
 
@@ -54,7 +54,7 @@ const budgetController = (function() {
   };
 
   return {
-    addItem: function(type, des, val) {
+    addItem: (type, des, val) => {
       var newItem, ID;
 
       //Create new id
@@ -169,7 +169,7 @@ const UIController = (function() {
 
     dec = numSplit[1];
 
-    return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
+    return `${type === 'exp' ? '-' : '+'} ${int}.${dec}`;
   };
 
   var nodeListForEach = function(list, callback) {
