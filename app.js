@@ -18,8 +18,6 @@ const controller = ((budgetCtrl, UICtrl) => {
         ctrlAddItem();
       }
     });
-
-    console.log('APP has started');
   };
 
   const ctrlAddItem = () => {
@@ -34,6 +32,7 @@ const controller = ((budgetCtrl, UICtrl) => {
 
   return {
     init: () => {
+      console.log('APP has started');
       return setupEventsListeners();
     }
   };
