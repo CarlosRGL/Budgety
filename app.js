@@ -1,13 +1,5 @@
 // Budget Controller
 const budgetController = (function() {
-  // Contructor for expenses
-  // var Expenses = function(id, description, value) {
-  //   this.id = id;
-  //   this.description = description;
-  //   this.value = value;
-  //   this.percentage = -1;
-  // };
-
   class Expenses {
     constructor(id, description, value) {
       this.id = id;
@@ -29,24 +21,14 @@ const budgetController = (function() {
     }
   }
 
-  // Expenses.prototype.calcPercentages = function(totalIncome) {
-  //   if (totalIncome > 0) {
-  //     this.percentage = Math.round(this.value / totalIncome * 100);
-  //   } else {
-  //     this.percentage = -1;
-  //   }
-  // };
-
-  // Expenses.prototype.getPercentage = function() {
-  //   return this.percentage;
-  // };
-
   // Contructor for incomes
-  var Income = function(id, description, value) {
-    this.id = id;
-    this.description = description;
-    this.value = value;
-  };
+  class Income {
+    constructor(id, description, value) {
+      this.id = id;
+      this.description = description;
+      this.value = value;
+    }
+  }
 
   var calculateTotal = function(type) {
     var sum = 0;
