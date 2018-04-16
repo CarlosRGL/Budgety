@@ -3,11 +3,28 @@ import { UIController } from './modules/UIController.js';
 
 // App Controller
 const controller = ((budgetCtrl, UICtrl) => {
-  const DOM = UICtrl.getDOMstrings();
+  // Setup events listenners for init functions
+  const setupEventsListeners = () => {
+    // Get classes from UI controllers
+    const DOM = UICtrl.getDOMstrings();
+
+    // Events listeners
+    document
+      .querySelector(DOM.inputBtn)
+      .addEventListener('click', ctrlAddItem());
+
+    document.addEventListener('keypress', event => {
+      if (event.keyCode === 13) {
+        ctrlAddItem();
+      }
+    });
+
+    console.log('APP has started');
+  };
 
   const ctrlAddItem = () => {
     // 1. Get the filed input data
-    console.log(UICtrl.getInput());
+    const input = UICtrl.getInput();
 
     // 2. Add item to budget controller
     // 3. Add the item to the UI
@@ -15,11 +32,11 @@ const controller = ((budgetCtrl, UICtrl) => {
     // 5. Display the budget
   };
 
-  document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem());
-
-  document.addEventListener('keypress', event => {
-    if (event.keyCode === 13) {
-      ctrlAddItem();
+  return {
+    init: () => {
+      return setupEventsListeners();
     }
-  });
+  };
 })(budgetController, UIController);
+
+controller.init();
