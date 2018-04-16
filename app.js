@@ -3,6 +3,8 @@ import { UIController } from './modules/UIController.js';
 
 // App Controller
 const controller = ((budgetCtrl, UICtrl) => {
+  const DOM = UICtrl.getDOMstrings();
+
   const ctrlAddItem = () => {
     // 1. Get the filed input data
     console.log(UICtrl.getInput());
@@ -13,11 +15,7 @@ const controller = ((budgetCtrl, UICtrl) => {
     // 5. Display the budget
   };
 
-  document
-    .querySelector('.add__btn')
-    .addEventListener('click', function(event) {
-      ctrlAddItem();
-    });
+  document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem());
 
   document.addEventListener('keypress', event => {
     if (event.keyCode === 13) {
