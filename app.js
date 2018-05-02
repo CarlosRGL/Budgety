@@ -1,7 +1,6 @@
 import { budgetController } from './modules/budgetController.js';
 import { UIController } from './modules/UIController.js';
 
-// App Controller
 const controller = ((budgetCtrl, UICtrl) => {
   // Setup events listenners for init functions
   const setupEventsListeners = () => {
@@ -23,6 +22,14 @@ const controller = ((budgetCtrl, UICtrl) => {
   const ctrlAddItem = () => {
     // 1. Get the filed input data
     const input = UICtrl.getInput();
+
+    const newItem = budgetCtrl.addItem(
+      input.type,
+      input.description,
+      input.value
+    );
+
+    console.table(newItem);
 
     // 2. Add item to budget controller
     // 3. Add the item to the UI
