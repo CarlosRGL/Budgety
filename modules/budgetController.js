@@ -47,6 +47,9 @@ export const budgetController = (() => {
 
       data.allItems[type].push(newItem);
       return newItem;
+    },
+
+    testing: function() {
       console.log(data);
     }
   };
